@@ -1,19 +1,6 @@
 import java.util.Arrays;
 import java.util.Random;
 
-/**
- * Класс для измерения времени работы алгоритмов сортировки
- * и анализа их практической сложности.
- *
- * Условия эксперимента:
- * - JDK 17+
- * - Фиксированный seed у Random (воспроизводимость)
- * - Каждому алгоритму передаётся отдельная копия массива (clone)
- * - Прогревочные запуски перед измерением
- * - Измерение только сортировки через System.nanoTime()
- * - Медиана по нескольким повторам
- * - Проверка корректности результата
- */
 public class SortingTest {
 
     private static final long SEED = 42L;           // фиксированный seed
@@ -128,10 +115,6 @@ public class SortingTest {
         void sort(int[] arr);
     }
 
-    /**
-     * Возвращает медиану времени сортировки (в наносекундах).
-     * Перед измерением выполняет прогревочные запуски.
-     */
     private static long measureMedian(int[] base, Sorter sorter, String name) {
         // Прогрев
         for (int i = 0; i < WARMUP_RUNS; i++) {
