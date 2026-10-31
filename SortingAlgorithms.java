@@ -1,13 +1,9 @@
 import java.util.Arrays;
 
-/**
- * Реализации классических алгоритмов сортировки.
- * Все методы сортируют массив на месте (in-place).
- */
+
 public class SortingAlgorithms {
 
-    // ==================== Bubble Sort ====================
-    // O(n²) в среднем и худшем случае, O(n) в лучшем (уже отсортирован)
+
     public static void bubbleSort(int[] arr) {
         if (arr == null || arr.length <= 1) return;
         int n = arr.length;
@@ -20,13 +16,12 @@ public class SortingAlgorithms {
                     swapped = true;
                 }
             }
-            // Оптимизация: если за проход не было обменов — массив уже отсортирован
+           
             if (!swapped) break;
         }
     }
 
-    // ==================== Selection Sort ====================
-    // O(n²) во всех случаях
+   
     public static void selectionSort(int[] arr) {
         if (arr == null || arr.length <= 1) return;
         int n = arr.length;
@@ -43,8 +38,7 @@ public class SortingAlgorithms {
         }
     }
 
-    // ==================== Insertion Sort ====================
-    // O(n²) в среднем и худшем, O(n) в лучшем (уже отсортирован)
+    
     public static void insertionSort(int[] arr) {
         if (arr == null || arr.length <= 1) return;
         int n = arr.length;
@@ -59,8 +53,7 @@ public class SortingAlgorithms {
         }
     }
 
-    // ==================== Quick Sort ====================
-    // Средний случай: O(n log n), худший: O(n²) (зависит от выбора pivot)
+   
     public static void quickSort(int[] arr) {
         if (arr == null || arr.length <= 1) return;
         quickSort(arr, 0, arr.length - 1);
@@ -74,7 +67,7 @@ public class SortingAlgorithms {
         }
     }
 
-    // Разделение (Lomuto partition scheme) с выбором последнего элемента как pivot
+    
     private static int partition(int[] arr, int low, int high) {
         int pivot = arr[high];
         int i = low - 1;
@@ -88,17 +81,12 @@ public class SortingAlgorithms {
         return i + 1;
     }
 
-    // ==================== Вспомогательные методы ====================
-
     private static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
     }
 
-    /**
-     * Проверка, что массив отсортирован по неубыванию.
-     */
     public static boolean isSorted(int[] arr) {
         if (arr == null || arr.length <= 1) return true;
         for (int i = 1; i < arr.length; i++) {
@@ -107,9 +95,6 @@ public class SortingAlgorithms {
         return true;
     }
 
-    /**
-     * Проверка корректности: сравнение с эталоном Arrays.sort.
-     */
     public static boolean isCorrect(int[] original, int[] sorted) {
         if (original == null || sorted == null) return original == sorted;
         if (original.length != sorted.length) return false;
